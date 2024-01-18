@@ -142,6 +142,7 @@ type disksLayout struct {
 type serverCtxt struct {
 	JSON, Quiet               bool
 	Anonymous                 bool
+	IgnoreAuth                bool
 	StrictS3Compat            bool
 	PreAllocate               bool
 	Addr, ConsoleAddr         string

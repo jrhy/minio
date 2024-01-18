@@ -163,6 +163,9 @@ func checkKeyValid(r *http.Request, accessKey string) (auth.Credentials, bool, A
 			if u.Credentials.Status == auth.AccountOff {
 				return cred, false, ErrAccessKeyDisabled
 			}
+			if globalServerCtxt.IgnoreAuth {
+				return auth.Credentials{}, false, ErrNone
+			}
 			return cred, false, ErrInvalidAccessKeyID
 		}
 		cred = u.Credentials

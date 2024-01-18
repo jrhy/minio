@@ -519,6 +519,9 @@ func checkRequestAuthTypeCredential(ctx context.Context, r *http.Request, action
 
 // Verify if request has valid AWS Signature Version '2'.
 func isReqAuthenticatedV2(r *http.Request) (s3Error APIErrorCode) {
+	if globalServerCtxt.IgnoreAuth {
+		return ErrNone
+	}
 	if isRequestSignatureV2(r) {
 		return doesSignV2Match(r)
 	}
@@ -526,6 +529,9 @@ func isReqAuthenticatedV2(r *http.Request) (s3Error APIErrorCode) {
 }
 
 func reqSignatureV4Verify(r *http.Request, region string, stype serviceType) (s3Error APIErrorCode) {
+	if globalServerCtxt.IgnoreAuth {
+		return ErrNone
+	}
 	sha256sum := getContentSha256Cksum(r, stype)
 	switch {
 	case isRequestSignatureV4(r):

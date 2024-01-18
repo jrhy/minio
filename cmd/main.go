@@ -59,6 +59,10 @@ var GlobalFlags = []cli.Flag{
 		Usage: "hide sensitive information from logging",
 	},
 	cli.BoolFlag{
+		Name:  "ignore-auth",
+		Usage: "accept any request signature",
+	},
+	cli.BoolFlag{
 		Name:  "json",
 		Usage: "output logs in JSON format",
 	},

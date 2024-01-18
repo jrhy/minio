@@ -357,6 +357,8 @@ func buildServerCtxt(ctx *cli.Context, ctxt *serverCtxt) (err error) {
 	ctxt.JSON = ctx.IsSet("json") || ctx.GlobalIsSet("json")
 	// Get quiet flag from command line argument.
 	ctxt.Quiet = ctx.IsSet("quiet") || ctx.GlobalIsSet("quiet")
+	// Get ignore-auth flag from command line argument.
+	ctxt.IgnoreAuth = ctx.IsSet("ignore-auth") || ctx.GlobalIsSet("ignore-auth")
 	// Get anonymous flag from command line argument.
 	ctxt.Anonymous = ctx.IsSet("anonymous") || ctx.GlobalIsSet("anonymous")
 	// Fetch address option
